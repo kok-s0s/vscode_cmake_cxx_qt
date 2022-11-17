@@ -1,11 +1,25 @@
-cmake_minimum_required(VERSION 3.0.0)
-project(qt_demo VERSION 0.1.0)
+cmake_minimum_required(VERSION 3.1.0)
 
-include(CTest)
-enable_testing()
+project(ServerTcp VERSION 1.0.0 LANGUAGES CXX)
 
-add_executable(qt_demo main.cpp)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
-include(CPack)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
+
+if(CMAKE_VERSION VERSION_LESS "3.7.0")
+    set(CMAKE_INCLUDE_CURRENT_DIR ON)
+endif()
+
+find_package(Qt5 COMPONENTS Widgets Network REQUIRED)
+
+add_executable(ServerTcp
+    ServerTcp.ui
+    ServerTcp.cpp
+    main.cpp
+    ServerTcp.qrc
+)
+
+target_link_libraries(ServerTcp Qt5::Widgets Qt5::Network)
