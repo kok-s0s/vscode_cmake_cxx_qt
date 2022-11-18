@@ -43,11 +43,19 @@ ServerTcp::ServerTcp(QWidget *parent) : QMainWindow(parent) {
   m_pTcpServer = new QTcpServer();
   connect(m_pTcpServer, &QTcpServer::newConnection, this,
           &ServerTcp::server_New_Connect);
+  connect(this, &ServerTcp::sendMessage, this, &ServerTcp::getMessage);
 }
 
 ServerTcp::~ServerTcp() {
   m_pTcpServer->close();
   m_pTcpServer->deleteLater();
+}
+
+void ServerTcp::getMessage(const QString &mes) { qDebug() << mes << endl; }
+
+void ServerTcp::on_pushButton_clicked() {
+  QString mes = "be happy";
+  emit sendMessage(mes);
 }
 
 void ServerTcp::on_btnListen_clicked() {

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>315</width>
-    <height>264</height>
+    <height>331</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -545,6 +545,30 @@
       </layout>
      </item>
     </layout>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>270</y>
+      <width>291</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>send message</string>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>30</width>
+      <height>16</height>
+     </size>
+    </property>
    </widget>
   </widget>
  </widget>

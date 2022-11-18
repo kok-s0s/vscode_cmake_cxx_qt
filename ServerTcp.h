@@ -9,10 +9,6 @@
 class ServerTcp : public QMainWindow {
   Q_OBJECT
 
-public:
-  ServerTcp(QWidget *parent = Q_NULLPTR);
-  ~ServerTcp();
-
 private:
   Ui::ServerTcpClass ui;
   QTcpServer *m_pTcpServer;
@@ -21,16 +17,18 @@ private:
   int m_testTypesCount;
   QString m_currentTestItem;
 
-private slots:
-  void on_btnListen_clicked();
+public:
+  ServerTcp(QWidget *parent = Q_NULLPTR);
+  ~ServerTcp();
+  Q_SIGNAL void sendMessage(const QString &mes);
+  void getMessage(const QString &mes);
 
-  void on_btnTestStop_clicked();
-
-  void on_btnSetPort_clicked();
-
-  void server_New_Connect();
-
-  void socket_Read_Data();
-
-  void socket_Disconnected();
+private:
+  Q_SLOT void on_pushButton_clicked();
+  Q_SLOT void on_btnListen_clicked();
+  Q_SLOT void on_btnTestStop_clicked();
+  Q_SLOT void on_btnSetPort_clicked();
+  Q_SLOT void server_New_Connect();
+  Q_SLOT void socket_Read_Data();
+  Q_SLOT void socket_Disconnected();
 };
